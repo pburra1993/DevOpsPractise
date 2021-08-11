@@ -1,0 +1,162 @@
+                                                        GIT COMMANDS
+
+-------------------------------------------------------------------------------------------------------------------------------------
+1. How to initialize the git in the directory ?
+   git init
+-------------------------------------------------------------------------------------------------------------------------------------
+2. Once we initialized the git in the specific directory, it automatically creates a hidden folder .git
+   Any folder or file starts with Dot(.), those we can called as hidden folder or hidden file
+   Suppose if we are unable to see the .git hidden folder, then we have follow the below steps.
+   With in the directory, click view at the top, then check hidden items.	
+-------------------------------------------------------------------------------------------------------------------------------------
+3. if we need to see the all hidden in the directory, then use below command
+   ls -a
+-------------------------------------------------------------------------------------------------------------------------------------
+4. Suppose, if any changes the code and push it into central repository, at this time we need to which person has committed this code. For this we need to configure few things mentioned below.
+
+git config --global user.name "Praveen Burra"
+git config --global user.email "burrapraveen207@gmail.com"
+
+if we need to see these configuration values, use below command
+git config --list
+-------------------------------------------------------------------------------------------------------------------------------------
+5. In git we have different areas/ phases
+   1. WorkSpace
+   2. Staging/Index area
+   3. Local Repository.
+-------------------------------------------------------------------------------------------------------------------------------------
+6. What is WorkSpace area ?
+   if we create any new file or modified exiting file within the folder, then thes	e area is caalled as WorkSpace area.
+-------------------------------------------------------------------------------------------------------------------------------------
+7. What is Staging/Index area ?
+   The files which we need to push to local repository, only those files we need to add into staging area.
+   
+-------------------------------------------------------------------------------------------------------------------------------------
+8. What is Local Repository area ?
+    The files present in this area will be moved to central repository.
+
+WorkSpace====> Staging=====>Local Repo =============> Central Repo.
+------------------------------------------------------------------------------------------------------------------------------------
+9. git status command helps to find the files in the workspace area.
+-------------------------------------------------------------------------------------------------------------------------------------
+10. git add Filename command is used to move the file frm workspaace to staging area.
+-------------------------------------------------------------------------------------------------------------------------------------
+11. when we exeucte the command git status
+    The filess showing in the red color text , those are un-tracked files which are present in the workspaace area.
+	The files showing in the green color text , those are staging area means changes to be committed.
+-------------------------------------------------------------------------------------------------------------------------------------
+12. git commit -m "<LABEL_MESSAGE>"
+    After execting this command, all the files present in staging area moved to Local Repository.
+	Commit Id will be create for this commit
+-------------------------------------------------------------------------------------------------------------------------------------
+13. Now we need to create a file and push to central Repository.
+    right cick on specific folder which is alreay initialized by git. click GitBash here
+	create a new file using command touch file1
+	run git status command, below is the respone
+	
+	On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        File1
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+THIS IS THE WORKSPACE AREA..
+
+-------------------------------------------------------------------------------------------------------------------------------------
+14.  git add File1
+     the File1 moves the workspaace to staging area.
+-------------------------------------------------------------------------------------------------------------------------------------
+15.  git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   File1
+
+THIS IS THE STAGING AREA..
+
+-------------------------------------------------------------------------------------------------------------------------------------
+16. $ git commit -m "First Sample File Commit"
+
+[master (root-commit) 325d7ca] First Sample File Commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 File1
+
+ FILE COMMITTED TO LOCAL REPOSITORY.
+-------------------------------------------------------------------------------------------------------------------------------------
+17.  git log
+commit 325d7ca7cbd7ab4d742cb529e74bca0b06144e05 (HEAD -> master)
+Author: Praveen Burra <burrapraveen207@gmail.com>
+Date:   Tue Aug 10 22:45:19 2021 +0530
+
+    First Sample File Commit
+
+-------------------------------------------------------------------------------------------------------------------------------------
+18. how to see the files that we are commited based on commit id
+   git show <commit_id>
+   $   git show 325d7ca7cbd7ab4d742cb529e74bca0b06144e05
+commit 325d7ca7cbd7ab4d742cb529e74bca0b06144e05 (HEAD -> master)
+Author: Praveen Burra <burrapraveen207@gmail.com>
+Date:   Tue Aug 10 22:45:19 2021 +0530
+
+    First Sample File Commit
+
+diff --git a/File1 b/File1
+new file mode 100644
+index 0000000..e69de29	
+-------------------------------------------------------------------------------------------------------------------------------------
+19. touch File1 File2 File3   -----------> Multiple files created
+-------------------------------------------------------------------------------------------------------------------------------------
+20. suppose if we moved multiple files to staging area, but we need to commit only single at this tme usse below command.
+   git commit -m"<Label_Message>" FileName
+   
+   Note: not possible more than one file like.
+   git commit -m"<Label_Message>"  ====> this command wll commit all the files present in the staging area.	
+   
+-------------------------------------------------------------------------------------------------------------------------------------
+21. For only modified files, we can directly add the file from WorkSpace area to Local Repository, using bellow command
+
+-------------------------------------------------------------------------------------------------------------------------------------
+22. suppose, by mistake if we add the files from workspaace to stating area, then what is the command to revert this to move file from staging to WorkSpace.
+     git reset HEAD <FilName>
+	          (OR)
+	 git restore --staged <FilName>
+	 
+	 For multiple files using this command 
+	 git reset HEAD *	 
+
+-------------------------------------------------------------------------------------------------------------------------------------
+23. suppose, by mistake if we commit the files from staging area to Local Repository area, but we need to revert the commit
+
+https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git/41168796
+
+ if we want to just undo commit without any other changes, we can use
+Option:1 
+ git reset --soft HEAD~1 ==>#Back to staging ==> while executing this command, the files present in he recent commit will move to the Staging area
+ Note: commit history also deleted.
+ 
+ If we want to undo commit and its changes (THIS IS DANGEROUS, because your change will lost), we can use
+ 
+ Option:2
+ $ git reset --hard HEAD~1 ===> This command removes the entire chnages whatever we did and the file doesnot exists in Staging & WorkSpace area
+  HEAD is now at 8b98a27 File1  added place
+  
+   
+ And if we want to undo commit and remove changes from stage, we can use
+ Option:3
+ git reset --mixed HEAD^ or in a short form git reset HEAD^  ==> this undo the commmit and also moved the file to unstage/WorkSpace area.
+ Chnages will not lost here
+
+NOTE :THESE COMMANDS ARE USED TO REVERT THE CODE FROM LOCAL REPOSITORY
+-------------------------------------------------------------------------------------------------------------------------------------
+24. Create an account in the GitHub to push the code into the repository.
+-------------------------------------------------------------------------------------------------------------------------------------
+25. How to clone/copy/download the repository from github
+git clone https://github.com/pburra1993/DevOpsPractise.git
+cd DirectoryName
