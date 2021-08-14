@@ -1,4 +1,4 @@
-                                                        GIT COMMANDS
+                                                          GIT COMMANDS
 
 -------------------------------------------------------------------------------------------------------------------------------------
 1. How to initialize the git in the directory ?
@@ -160,3 +160,122 @@ NOTE :THESE COMMANDS ARE USED TO REVERT THE CODE FROM LOCAL REPOSITORY
 25. How to clone/copy/download the repository from github
 git clone https://github.com/pburra1993/DevOpsPractise.git
 cd DirectoryName
+
+-------------------------------------------------------------------------------------------------------------------------------------
+26. How to provide collabarative access to other people.
+
+GitHub >> Settings >> manage Access >> Invite Collabarative
+
+-------------------------------------------------------------------------------------------------------------------------------------
+27. git pull --rebase to fetch the new chnages from central repository to Local Repo.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+28. How to get the recent logs.
+
+git log -n
+git log -2 for the recent 2 commit_id
+
+-------------------------------------------------------------------------------------------------------------------------------------
+29. git log --oneline , it will show the the commit id and messge
+
+    git log --oneline -n (n will be 1 or 2 or 3.................)
+	
+	 git log --author=pburra1993  (Author Specific Commits)
+-------------------------------------------------------------------------------------------------------------------------------------
+30. How to get the logs Starting year to Current year
+
+ git log -until=yyyy-mmm-dd  (starting year to middle year)
+                     (OR)
+ git log -before=yyyy-mmm-dd 
+ 					 
+ 
+git log -since=yyyy-mmm-dd   (middle year to current year)
+                   (OR)
+git log -after=yyyy-mmm-dd  
+ 
+-------------------------------------------------------------------------------------------------------------------------------------
+30. How to get the logs any where between the years. ?'
+
+git log -since="yyyy-mmm-dd" -until="yyyy-mmm-dd"
+                 (OR)
+git log -after="yyyy-mmm-dd" -before="yyyy-mmm-dd"
+
+git log -after="yyyy-mmm-dd" -before="yyyy-mmm-dd"
+
+Filtered with Hours Hour
+
+git log -after="yyyy-mmm-dd hh:mm" -before="yyyy-mmm-dd hh:mm"   (24 hours format)
+-------------------------------------------------------------------------------------------------------------------------------------
+31. search a specific atring in a commit.
+
+	git log --grep="label".
+-------------------------------------------------------------------------------------------------------------------------------------
+
+32. git branch--> command will show all list of branches.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+33. git branch <branch-name>  --> this command will create a new branch
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+34. git checkout branch-name --> this command will create a new branch.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+35 how to get the data from one branch to another
+
+First Checkout the branch where we need to merge the code, then use below command.
+
+git merge <branch-name>
+-------------------------------------------------------------------------------------------------------------------------------------
+36. 
+git cherry-pick <commit-id> is used to move the specific commit data from one ranch to another.
+31ae4a533ba6fd72845125ac98c31379c13d6eb3
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+37. How to push new branch code tp central repository.
+
+git push origin <branch-name>
+          (OR)
+git push <path-of-central repository>	<branch-Name>  
+-------------------------------------------------------------------------------------------------------------------------------------
+38.  How to push the new branch code in to Repo servr.
+git push origin <branch-name>
+ git push --set-upstream origin release/v1.0
+-------------------------------------------------------------------------------------------------------------------------------------
+39. How to delete the branch name in the local repository.
+  git branch -d <branch-name>   (in local repository) 
+
+-------------------------------------------------------------------------------------------------------------------------------------
+40. Delete the branch name in the central repository.
+
+   git push origin -d <branch-name>   (in Central repository) 
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+41. git branch -r command will show all the list of branches in the central repository
+    git branch -a
+-------------------------------------------------------------------------------------------------------------------------------------
+42. revert the commit
+     revert <commit-id>
+
+-------------------------------------------------------------------------------------------------------------------------------------
+43. how to re-revert the commit
+   revert <revert-commit-id>
+
+-------------------------------------------------------------------------------------------------------------------------------------
+44. Create a branch and checkout using sngle command
+    git checkout -b <branch-name>
+
+-------------------------------------------------------------------------------------------------------------------------------------
+45. suppose if we get any conflict whil merging 2 branches, then if we need to come out of this conflict (means back to original state)
+
+ git merge --abort
+ 
+ it Means, we are not fixing the conflicts here, we just doing abort (back to original state)
+-------------------------------------------------------------------------------------------------------------------------------------
+46. 
+
+-------------------------------------------------------------------------------------------------------------------------------------
